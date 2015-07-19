@@ -50,7 +50,7 @@
 		<!-- edit new image view -->
 		<div class="col-sm-8">
 			<div id="edit-view">
-				<img id="edit-img" class="img-responsive center-block" src="/img/edit-example.jpg" alt="Example Image">
+				<img id="edit-img" class="img-responsive center-block" src="../img/edit-example.jpg" alt="Example Image">
 			</div>
 			<div id="filterContainer">
 				<ul id="filters">
@@ -81,15 +81,15 @@
 
 		<!-- editing options view -->
 		<div class="edit-panel col-sm-4">
-			<form>
+			<form id="submit">
 				<div class="form-group">
 			    	<input type="file" id="exampleInputFile">
 			  </div>
 			  <div class="form-group">
-			    	<input type="author" class="form-control" placeholder="Author">
+			    	<input type="text" class="form-control" name="author" placeholder="Author">
 			  </div>
 			  <div class="form-group">
-			    	<textarea type="text" class="form-control" placeholder="Write a caption here."></textarea>
+			    	<textarea type="text" class="form-control" name="text" placeholder="Write a caption here."></textarea>
 			  </div>
 			  <button type="submit" class="btn btn-default">Submit</button>
 			</form>

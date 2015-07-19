@@ -22,5 +22,25 @@ $(document).ready(function() {
 			originalCaman.render();
 		}
 	});
+
+	$('#submit').on('submit', function (event) {
+		event.preventDefault();
+		// Send POST to server to create newly edited photo
+
+		$.ajax({
+			type: "POST",
+			url: '/api/photos',
+			data: {
+				imageData: $('#edit-img')[0].toDataURL(),
+				text: 'text',
+				author: 'author'
+			},
+			success: function(data) {
+				// navigate to gallery
+				console.log(data);
+			},
+			dataType: 'multipart/form-data'
+		});
+	});
 });
 
