@@ -1,0 +1,24 @@
+{
+  "name": "darkroom",
+  "version": "1.0.0",
+  "description": "a photo filter application",
+  "main": "server.js",
+  "scripts": {
+    "test": "thom",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/erintherad/digital-darkroom.git"
+  },
+  "keywords": [
+    "photo",
+    "filter"
+  ],
+  "author": "Erin Mahoney",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/erintherad/digital-darkroom/issues"
+  },
+  "homepage": "https://github.com/erintherad/digital-darkroom"
+}
