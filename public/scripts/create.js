@@ -25,8 +25,8 @@ $(document).ready(function() {
 
 	$('#submit').on('submit', function (event) {
 		event.preventDefault();
+		
 		// Send POST to server to create newly edited photo
-
 		$.ajax({
 			type: "POST",
 			url: '/api/photos',
@@ -36,10 +36,10 @@ $(document).ready(function() {
 				author: 'author'
 			},
 			success: function(data) {
+				// figure out where to send user next...
 				// navigate to gallery
-				console.log(data);
-			},
-			dataType: 'multipart/form-data'
+				alert('successfully created photo!');
+			}
 		});
 	});
 });

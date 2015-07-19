@@ -16,7 +16,7 @@ mongoose.connect('mongodb://localhost/darkroom');
 app.use(express.static(__dirname + '/public'));
 
 // configure bodyParser for handling data
-app.use(bodyParser.urlencoded({extended: true, limit: '50mb'}));
+app.use(bodyParser.urlencoded({extended: true, limit: '5mb'}));
 
 // ROUTES //
 
@@ -33,19 +33,23 @@ app.get('/gallery', function(req, res) {
 	res.sendFile(__dirname + '/public/views/gallery.html');
 });
 
+// TESTING ONLY
+// returns an image on the filesystem
 app.get('/images/:name', function(req, res) {
 	res.sendFile(__dirname + '/public/images/' + req.params.name);
 });
 
 // POST ROUTE FOR CREATING NEW EDITED images
 app.post('/api/photos', function(req, res) {
-
+	// boiling data down to pixel info
 	var rawImageData = req.body.imageData;
 	rawImageData = rawImageData.replace('data:image/png;base64,', '');
 	rawImageData = rawImageData.replace(' ', '+');
 
+	// Storing image data into buffer
 	var imageData = new Buffer(rawImageData, 'base64');
 
+	// new instance of photo
 	var newPhoto = new db.Photo ({
 		img: {
 			data: imageData,
@@ -55,21 +59,63 @@ app.post('/api/photos', function(req, res) {
 		author: req.body.author
 	});
 
+	// Persist the image data into db
 	newPhoto.save(function(err, savedPhoto) {
 		console.log("error(?): " + err);
-		res.json(savedPhoto);
+		// Respond with object to client
+		res.json({
+			'_id': savedPhoto._id,
+			'text': savedPhoto.text,
+			'author': savedPhoto.author
+		});
 	});
 });
 
-app.get('/photos/:id', function(req, res) {
+// find all edited photos in db
+app.get('/api/photos', function(req, res) {
+	db.Photo.find({}).select('text _id author').exec(function(err, photos) {
+		res.json(photos);
+	});
+});
 
+// get specific Photo models
+app.get('/api/photos/:id', function(req, res) {
+	var photoId = req.params.id;
+	db.Photo.findOne({_id: photoId}).select('text _id author').exec(function(err, photo) {
+		res.json(photo);
+	});
+});
+
+// get image data only
+app.get('/photos/:id', function(req, res) {
 	var photoId = req.params.id;
 	db.Photo.findOne({_id: photoId}, function(err, foundPhoto) {
 		res.set('Content-Type', 'image/png');
 		res.send(foundPhoto.img.data);
 	});
-
 });
+
+// update existing photo posts
+app.put('/api/photos/:id', function(req, res) {
+	var photoId = req.params.id;
+	db.Photo.findOne({_id: photoId}).select('text _id author').exec(function(err, foundPhoto) {
+		foundPhoto.author = req.body.author;
+		foundPhoto.text = req.body.text;
+
+		foundPhoto.save(function(err, savedPhoto) {
+			res.json(savedPhoto);
+		});
+	});
+});
+
+// delete post in gallery
+app.delete('/api/photos/:id', function(req, res) {
+	var photoId = req.params.id;
+	db.Photo.findOneAndRemove({_id: photoId}).select('text _id author').exec(function(err, deletePhoto) {
+		res.json(deletePhoto);
+	});
+});
+
 
 app.listen(3000, function() {
 	console.log('Server started on localhost:3000');
