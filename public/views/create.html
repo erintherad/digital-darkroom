@@ -14,6 +14,8 @@
 	<!-- Custom style sheet -->
 	<link rel="stylesheet" href="../styles/style.css" />
 
+	<link rel="digital darkroom icon" href="../img/logo/logo-sm.png">
+
 	<title>Create</title>               
 
 </head>
@@ -46,13 +48,21 @@
 	<!-- top navbar end -->	
 
 	<div class="edit-container container">
-
+		<!-- Page Heading -->
+	    <div class="row">
+	        <div class="col-lg-12">
+	            <h1 class="page-header">Digital Darkroom
+	                <small>Create your photograph.</small>
+	            </h1>
+	        </div>
+	    </div>
+	    <!-- /.row -->
 		<!-- edit new image view -->
 		<div class="col-sm-8">
 			<div id="edit-view">
 				<img id="edit-img" class="img-responsive center-block" src="../img/edit-example.jpg" alt="Example Image">
 			</div>
-			<div id="filterContainer">
+			<div class="row-fluid" id="filterContainer">
 				<ul id="filters">
 					<li> <a href="#" id="normal">Normal</a> </li>
 					<li> <a href="#" id="vintage">Vintage</a> </li>
@@ -76,7 +86,6 @@
 					<!-- 14 More filters go here -->
 				</ul>
 			</div>
-
 		</div>
 
 		<!-- editing options view -->
@@ -122,6 +131,9 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/camanjs/4.0.0/caman.full.min.js"></script>
 <!-- Custom script sheet -->
 <script src="../scripts/create.js"></script>
+
+<script src="../scripts/jquery.mousewheel.min.js"></script>
+
 
 </body>
 </html>

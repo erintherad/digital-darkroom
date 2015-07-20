@@ -1,5 +1,5 @@
-var originalCaman;
-
+var originalCaman,
+	filterContainer = $('#filterContainer');
 $(document).ready(function() {	
 
 	// renders image as canvas
@@ -41,6 +41,16 @@ $(document).ready(function() {
 				alert('successfully created photo!');
 			}
 		});
+	});
+
+	// Use the mousewheel plugin to scroll
+	// scroll the div more intuitively
+
+	filterContainer.find('ul').on('mousewheel',function(e, delta){
+
+		this.scrollLeft -= (delta * 50);
+		e.preventDefault();
+
 	});
 });
 
