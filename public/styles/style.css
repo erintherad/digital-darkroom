@@ -10,7 +10,7 @@ body {
 -----------------------------*/
 @font-face {
     font-family: osp-din;
-    src: url(../fonts/OSP-DIN.ttf);
+    src: url(/styles/fonts/OSP-DIN.ttf);
 }
 @font-face {
     font-family: sertig; 
