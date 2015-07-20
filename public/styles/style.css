@@ -43,6 +43,13 @@ body {
 .page-header {
 	padding-top: 40px;
 }
+#photo-modal input {
+    border: none;
+}
+
+#photo-modal input.edit {
+    border: solid;
+}
 
 /*----------------------------
     CREATE VIEW STYLES
