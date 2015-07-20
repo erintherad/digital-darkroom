@@ -119,7 +119,7 @@ app.delete('/api/photos/:id', function(req, res) {
 mongoose.createConnection(
   process.env.MONGOLAB_URI ||
   process.env.MONGOHQ_URL ||
-  'mongodb://localhost/photo' 
+  'mongodb://localhost/photos' 
 );
 // app.listen(process.env.PORT || 3000, function() {
 // 	console.log('Server started on localhost:3000');
