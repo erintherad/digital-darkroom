@@ -56,30 +56,36 @@
 
         <!-- Photogallery here -->
         <div class="row" id="photo-gallery">
-            <div id="photo-modal" class="modal fade" data-photo-id="">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-8 image"><img class="img-responsive" /></div>
-                                    <div class="col-md-4">
-                                        <form id="update-photo">
-                                            <input class="author" name="author" type="text" value=""></input>
-                                            <input class="text" name="text" type="text" value=""></input>
-                                        </form>
-                                    </div>
-                                    <!-- edit post (pencil icon) to toggle form -->
-                                    <a class="edit-pencil" role="button">
-                                        <span class="glyphicon glyphicon-pencil edit"></span>
-                                    </a>                    
+        </div>
+
+        <div id="photo-modal" class="modal fade" data-photo-id="">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <a class="close delete delete-photo closeBtn" aria-label="delete photo"><span aria-hidden="true">
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                        </a>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-8 image">
+                                    <img class="img-responsive" />
                                 </div>
+                                <div class="col-md-4">
+                                    <form id="update-photo">
+                                        <input class="author" name="author" type="text" value=""></input>
+                                        <input class="text" name="text" type="text" value=""></input>
+                                    </form>
+                                </div>
+                                <!-- edit post (pencil icon) to toggle form -->
+                                <a class="edit-pencil" role="button">
+                                    <span class="glyphicon glyphicon-pencil edit"></span>
+                                </a>                    
                             </div>
                         </div>
-                        <div class="modal-footer hidden">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
-                            <button type="submit" form="update-photo" class="btn btn-primary">UPDATE YOUR Photo!</button>
-                        </div>
+                    </div>
+                    <div class="modal-footer hidden">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
+                        <button type="submit" form="update-photo" class="btn btn-primary">UPDATE YOUR Photo!</button>
                     </div>
                 </div>
             </div>
@@ -146,8 +152,8 @@
     <!-- Photo Gallery Underscore Template-->
     <script type="text/template" id="photo-template">
     <!-- row 1-->
-    <div class="col-md-4 portfolio-item">
-        <a href="#" data-toggle="modal" data-target="#photo-modal" data-id="<%= _id %>">
+    <div class="col-md-4 photo" data-id="<%= _id %>">
+        <a href="#" data-toggle="modal" data-target="#photo-modal">
             <img class="img-responsive" src="/photos/<%= _id %>" />
         </a>
     </div>

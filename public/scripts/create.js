@@ -32,8 +32,8 @@ $(document).ready(function() {
 			url: '/api/photos',
 			data: {
 				imageData: $('#edit-img')[0].toDataURL(),
-				text: 'text',
-				author: 'author'
+				text: $('textarea[name=text]').val(),
+				author: $('input[name=author]').val()
 			},
 			success: function(data) {
 				// figure out where to send user next...

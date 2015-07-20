@@ -21,8 +21,27 @@ $(document).ready(function() {
 				});
 			});
 		},
+
 		getPhoto: function(id) {
 			return _.findWhere(allPhotos, {_id: id});
+		},
+
+		resetModal: function() {
+			$('.text').removeClass('edit');
+			$('.modal-footer').addClass('hidden');
+		},
+
+		delete: function(id) {
+			$.ajax({
+				type: 'DELETE',
+				url: '/api/photos/' + id,
+				success: function(data) {
+					// delete photo from gallery
+					$('.photo[data-id=' + id + ']').remove();
+					// hide modal
+					$('#photo-modal').modal('hide');
+				}
+			});
 		}
 	};
 
@@ -30,7 +49,7 @@ $(document).ready(function() {
 
 	$('#photo-modal').on('show.bs.modal', function(event) {
 		var anchor = $(event.relatedTarget);
-		var id = anchor.attr('data-id');
+		var id = anchor.closest('.photo').attr('data-id');
 		var photo = photoController.getPhoto(id);
 		var modal = $(this);
 
@@ -38,11 +57,23 @@ $(document).ready(function() {
 		modal.find('.image img').attr('src', '/photos/' + photo._id);
 		modal.find('.author').val(photo.author);
 		modal.find('.text').val(photo.text);
-	});	
+	});
+
+	$('#photo-modal').on('hidden.bs.modal', function(event) {
+		photoController.resetModal();
+	});
 
 	$('.edit-pencil').on('click', function(event) {
 		$('.text').addClass('edit');
 		$('.modal-footer').removeClass('hidden');
+	});
+
+	$('.delete-photo').on('click', function(event) {
+		var modal = $('#photo-modal');
+		var id = $(modal).attr('data-photo-id');
+		
+		photoController.delete(id);
+
 	});
 
 	$('#update-photo').on('submit', function(event) {
@@ -60,8 +91,7 @@ $(document).ready(function() {
 			url: '/api/photos/' + id,
 			data: photo,
 			success: function(data) {
-				$('.text').removeClass('edit');
-				$('.modal-footer').addClass('hidden');	
+				photoController.resetModal();
 			},
 			error: function(jqXHR, textStatus, errorThrow) {
 				console.log(textStatus);

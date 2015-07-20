@@ -111,7 +111,7 @@ app.put('/api/photos/:id', function(req, res) {
 // delete post in gallery
 app.delete('/api/photos/:id', function(req, res) {
 	var photoId = req.params.id;
-	db.Photo.findOneAndRemove({_id: photoId}).select('text _id author').exec(function(err, deletePhoto) {
+	db.Photo.remove({_id: photoId}).select('text _id author').exec(function(err, deletePhoto) {
 		res.json(deletePhoto);
 	});
 });
