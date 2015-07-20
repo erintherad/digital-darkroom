@@ -4,7 +4,7 @@
   "description": "a photo filter application",
   "main": "server.js",
   "scripts": {
-    "test": "thom",
+    "test": "test",
     "start": "node server.js"
   },
   "repository": {
@@ -20,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/erintherad/digital-darkroom/issues"
   },
-  "homepage": "https://github.com/erintherad/digital-darkroom"
+  "homepage": "https://github.com/erintherad/digital-darkroom",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "express": "^4.13.1",
+    "mongoose": "^4.0.8",
+    "underscore": "^1.8.3"
+  }
 }

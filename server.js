@@ -116,7 +116,11 @@ app.delete('/api/photos/:id', function(req, res) {
 	});
 });
 
-
-app.listen(3000, function() {
-	console.log('Server started on localhost:3000');
-});
+mongoose.connect(
+  process.env.MONGOLAB_URI ||
+  process.env.MONGOHQ_URL ||
+  'mongodb://localhost/photos' 
+);
+// app.listen(process.env.PORT || 3000, function() {
+// 	console.log('Server started on localhost:3000');
+// });
