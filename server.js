@@ -9,9 +9,6 @@ var express = require('express'),
 	db = require('./models/models'),
 	mongoose = require('mongoose');
 
-// connect db
-mongoose.connect('mongodb://localhost/darkroom');
-
 // server js and css files from public folder
 app.use(express.static(__dirname + '/public'));
 
@@ -119,7 +116,7 @@ app.delete('/api/photos/:id', function(req, res) {
 mongoose.createConnection(
   process.env.MONGOLAB_URI ||
   process.env.MONGOHQ_URL ||
-  'mongodb://localhost/photos' 
+  'mongodb://localhost/darkroom' 
 );
 // app.listen(process.env.PORT || 3000, function() {
 // 	console.log('Server started on localhost:3000');
