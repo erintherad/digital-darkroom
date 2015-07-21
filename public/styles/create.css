@@ -103,31 +103,6 @@ h1 small {
     }
 }
 
-
-/*----------------------------
-    LANDING FILTER STYLES
------------------------------*/
-
-
-/*----------------------------
-    GALLERY VIEW STYLES
------------------------------*/
-
-.photo {
-    margin-bottom: 25px;
-}
-
-.page-header {
-	padding-top: 40px;
-}
-#photo-modal input {
-    border: none;
-}
-
-#photo-modal input.edit {
-    border: solid;
-}
-
 /*----------------------------
     CREATE VIEW STYLES
 -----------------------------*/

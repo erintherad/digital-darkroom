@@ -7,7 +7,9 @@ var express = require('express'),
 	bodyParser = require('body-parser'),
 	_ = require('underscore'),
 	db = require('./models/models'),
-	mongoose = require('mongoose');
+	mongoose = require('mongoose'),
+	User = require('./models/models'),
+	session = require('express-session');
 
 // server js and css files from public folder
 app.use(express.static(__dirname + '/public'));
@@ -15,7 +17,36 @@ app.use(express.static(__dirname + '/public'));
 // configure bodyParser for handling data
 app.use(bodyParser.urlencoded({extended: true, limit: '5mb'}));
 
+// middleware to manage sessions
+app.use('/', function (req, res, next) {
+  // saves userId in session for logged-in user
+  req.login = function (user) {
+    session.userId = user.id;
+  };
+
+  // finds user currently logged in based on `session.userId`
+  req.currentUser = function (callback) {
+    User.findOne({_id: session.userId}, function (err, user) {
+      req.user = user;
+      callback(null, user);
+    });
+  };
+
+  // destroy `session.userId` to log out user
+  req.logout = function () {
+    req.session.userId = null;
+    req.user = null;
+  };
+
+  next();
+});
+
 // ROUTES //
+
+// login route (renders login view)
+app.get('/login', function (req, res) {
+  res.sendFile(__dirname + '/public/views/index.html');
+});
 
 // root route (serves index.html, create.html, gallery.html)
 app.get('/', function(req, res) {
@@ -113,12 +144,45 @@ app.delete('/api/photos/:id', function(req, res) {
 	});
 });
 
+// FUCKING AUTH //
+
+// signup route with placeholder response
+app.get('/signup', function (req, res) {
+  res.send('coming soon');
+});
+
+// user submits the signup form
+app.post('/users', function(req, res) {
+	// grab user data from params (req body)
+	var newUser = req.body.user;
+
+	// create new user with secure password
+	User.createSecure(newUser.email, newUser.password, function(err, user) {
+		res.send(user);
+	});
+});
+
+// user submits the login form
+app.post('/login', function (req, res) {
+
+  // grab user data from params (req.body)
+  var userData = req.body.user;
+
+  // call authenticate function to check if password user entered is correct
+  User.authenticate(userData.email, userData.password, function (err, user) {
+    // saves user id to session
+    req.login(user);
+
+    // redirect to user create
+    res.redirect('/gallery');
+  });
+});
+
+
 mongoose.connect(
-  process.env.MONGOLAB_URI || 'mongodb://localhost/darkroom'
+  /*process.env.MONGOLAB_URI ||*/ 'mongodb://localhost/darkroom'
 );
 
-// connect db
-// mongoose.connect('mongodb://localhost/darkroom');
 
 app.listen(process.env.PORT || 3000, function() {
 	console.log('Server started on localhost:3000');
