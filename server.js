@@ -180,7 +180,7 @@ app.post('/login', function (req, res) {
 
 
 mongoose.connect(
-  /*process.env.MONGOLAB_URI ||*/ 'mongodb://localhost/darkroom'
+  process.env.MONGOLAB_URI || 'mongodb://localhost/darkroom'
 );
 
 
