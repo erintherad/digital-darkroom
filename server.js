@@ -85,23 +85,25 @@ app.post('/api/photos', function(req, res) {
 	// Storing image data into buffer
 	var imageData = new Buffer(rawImageData, 'base64');
 
-	// new instance of photo
-	var newPhoto = new db.Photo ({
-		img: {
-			data: imageData,
-			contentType: 'image/png'
-		},
-		text: req.body.text,
-		author: req.body.author
-	});
+	req.currentUser(function(err, user) {
+		// new instance of photo
+		var newPhoto = new db.Photo ({
+			img: {
+				data: imageData,
+				contentType: 'image/png'
+			},
+			text: req.body.text,
+			author: user
+		});
 
-	// Persist the image data into db
-	newPhoto.save(function(err, savedPhoto) {
-		// Respond with object to client
-		res.json({
-			'_id': savedPhoto._id,
-			'text': savedPhoto.text,
-			'author': savedPhoto.author
+		// Persist the image data into db
+		newPhoto.save(function(err, savedPhoto) {
+			// Respond with object to client
+			res.json({
+				'_id': savedPhoto._id,
+				'text': savedPhoto.text,
+				'author': savedPhoto.author
+			});
 		});
 	});
 });
@@ -134,7 +136,6 @@ app.get('/photos/:id', function(req, res) {
 app.put('/api/photos/:id', function(req, res) {
 	var photoId = req.params.id;
 	db.Photo.findOne({_id: photoId}).select('text _id author').exec(function(err, foundPhoto) {
-		foundPhoto.author = req.body.author;
 		foundPhoto.text = req.body.text;
 
 		foundPhoto.save(function(err, savedPhoto) {
