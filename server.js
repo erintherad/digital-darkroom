@@ -93,7 +93,7 @@ app.post('/api/photos', function(req, res) {
 				contentType: 'image/png'
 			},
 			text: req.body.text,
-			author: user
+			author: user._id
 		});
 
 		// Persist the image data into db
@@ -110,7 +110,7 @@ app.post('/api/photos', function(req, res) {
 
 // find all edited photos in db
 app.get('/api/photos', function(req, res) {
-	db.Photo.find({}).select('text _id author').exec(function(err, photos) {
+	db.Photo.find({}).select('text _id author').populate('author').exec(function(err, photos) {
 		res.json(photos);
 	});
 });
@@ -118,7 +118,7 @@ app.get('/api/photos', function(req, res) {
 // get specific Photo models
 app.get('/api/photos/:id', function(req, res) {
 	var photoId = req.params.id;
-	db.Photo.findOne({_id: photoId}).select('text _id author').exec(function(err, photo) {
+	db.Photo.findOne({_id: photoId}).select('text _id author').populate('author').exec(function(err, photo) {
 		res.json(photo);
 	});
 });
@@ -135,7 +135,7 @@ app.get('/photos/:id', function(req, res) {
 // update existing photo posts
 app.put('/api/photos/:id', function(req, res) {
 	var photoId = req.params.id;
-	db.Photo.findOne({_id: photoId}).select('text _id author').exec(function(err, foundPhoto) {
+	db.Photo.findOne({_id: photoId}).select('text _id author').populate('author').exec(function(err, foundPhoto) {
 		foundPhoto.text = req.body.text;
 
 		foundPhoto.save(function(err, savedPhoto) {
@@ -147,7 +147,7 @@ app.put('/api/photos/:id', function(req, res) {
 // delete post in gallery
 app.delete('/api/photos/:id', function(req, res) {
 	var photoId = req.params.id;
-	db.Photo.remove({_id: photoId}).select('text _id author').exec(function(err, deletePhoto) {
+	db.Photo.remove({_id: photoId}).select('text _id author').populate('author').exec(function(err, deletePhoto) {
 		res.json(deletePhoto);
 	});
 });
@@ -158,7 +158,7 @@ app.post('/api/users', function(req, res) {
 	var newUser = req.body.user;
 
 	// create new user with secure password
-	db.User.createSecure(newUser.email, newUser.password, function(err, user) {
+	db.User.createSecure(newUser.name, newUser.email, newUser.password, function(err, user) {
 		// saves user id to session
 		req.login(user);
 

@@ -6,6 +6,7 @@ salt = bcrypt.genSaltSync(10);
 // SCHEMAS
 
 var UserSchema = new Schema({
+	name: String,
 	email: String,
 	passwordDigest: String
 });
@@ -13,11 +14,14 @@ var UserSchema = new Schema({
 var PhotoSchema = new Schema({
 	img: { data: Buffer, contentType: String },
 	text: String,
-	author: String
+	author: {
+    	type: Schema.Types.ObjectId,
+    	ref: 'User'
+  	}
 });
 
 // create a new user with secure (hashed) password
-UserSchema.statics.createSecure = function (email, password, callback) {
+UserSchema.statics.createSecure = function (name, email, password, callback) {
 	// `this` references our schema
 	// store it in variable `that` because `this` changes context in nested callbacks
 	var that = this;
@@ -29,6 +33,7 @@ UserSchema.statics.createSecure = function (email, password, callback) {
 
 			// create the new user (save to db) with hashed password
 			that.create({
+				name: name,
 				email: email,
 				passwordDigest: hash
 			}, callback);
