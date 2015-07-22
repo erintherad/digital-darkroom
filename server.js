@@ -16,16 +16,24 @@ app.use(express.static(__dirname + '/public'));
 // configure bodyParser for handling data
 app.use(bodyParser.urlencoded({extended: true, limit: '5mb'}));
 
+// set session options
+app.use(session({
+  saveUninitialized: true,
+  resave: true,
+  secret: 'DarkroomCookieSecret',
+  cookie: { maxAge: 60000 }
+}));
+
 // middleware to manage sessions
 app.use('/', function (req, res, next) {
   // saves userId in session for logged-in user
   req.login = function (user) {
-    session.userId = user.id;
+    req.session.userId = user.id;
   };
 
   // finds user currently logged in based on `session.userId`
   req.currentUser = function (callback) {
-    db.User.findOne({_id: session.userId}, function (err, user) {
+    db.User.findOne({_id: req.session.userId}, function (err, user) {
       req.user = user;
       callback(null, user);
     });
@@ -41,11 +49,6 @@ app.use('/', function (req, res, next) {
 });
 
 // ROUTES //
-
-// login route (renders login view)
-app.get('/login', function (req, res) {
-  res.sendFile(__dirname + '/public/views/index.html');
-});
 
 // root route (serves index.html, create.html, gallery.html)
 app.get('/', function(req, res) {
@@ -142,27 +145,19 @@ app.delete('/api/photos/:id', function(req, res) {
 	});
 });
 
-// FUCKING AUTH //
-
-// signup route with placeholder response
-app.get('/signup', function (req, res) {
-  res.send('coming soon');
-});
-
 // user submits the signup form
-app.post('/users', function(req, res) {
+app.post('/api/users', function(req, res) {
 	// grab user data from params (req body)
 	var newUser = req.body.user;
 
 	// create new user with secure password
 	db.User.createSecure(newUser.email, newUser.password, function(err, user) {
-		res.send(user);
+		res.json(user);
 	});
 });
 
 // user submits the login form
-app.post('/login', function (req, res) {
-
+app.post('/api/login', function (req, res) {
   // grab user data from params (req.body)
   var userData = req.body.user;
 
@@ -176,11 +171,9 @@ app.post('/login', function (req, res) {
   });
 });
 
-
 mongoose.connect(
   process.env.MONGOLAB_URI || 'mongodb://localhost/darkroom'
 );
-
 
 app.listen(process.env.PORT || 3000, function() {
 	console.log('Server started on localhost:3000');
