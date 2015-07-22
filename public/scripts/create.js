@@ -51,5 +51,9 @@ $(document).ready(function() {
 		e.preventDefault();
 
 	});
+
+	$('#signUpModal').on('shown.bs.modal', function(event) {
+		$('#name').focus();
+	});
 });
 

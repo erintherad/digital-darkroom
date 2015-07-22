@@ -21,34 +21,72 @@
 </head>
 <body id="create-view">
 
-	<!-- top navbar -->
-	<nav class="navbar navbar-default navbar-fixed-top navbar-default" id="topNavbar">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#"></a>
-			</div>
+				<!-- top navbar -->
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<a class="navbar-brand" href="/"></a>
+					</div>
 
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">ABOUT </a></li>
-					<li><a href="#">GALLERY</a></li>
-					<li><a href="#">CREATE</a></li>
-					<li>
-						<a href="/logout">LOGOUT</a>
-					</li>
-				</ul>
-			</div><!-- /.navbar-collapse -->
-		</div><!-- /.container-fluid -->
-	</nav>
-	<!-- top navbar end -->	
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li>
+								<a href="/logout">Log Out</a>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="/">Home</a></li>
+									<li><a href="/gallery">Gallery</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#">About</a></li>
+									<li>
+                                        <a data-toggle="modal" data-target="#signUpModal">Sign Up</a>
+                                    </li>
+								</ul>
+							</li>
+						</ul>
+					</div><!-- /.navbar-collapse -->
+				</div><!-- /.container-fluid -->
+			</nav>
+			<!-- top navbar end -->	
+
+			<!-- modal sign-UP form -->
+			<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="Sign up modal">
+				<div class="modal-dialog" role="sign up">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">Create your account.</h4>
+						</div>
+						<div class="modal-body">
+							<!-- Login form -->
+							<div class="container text-center">
+								<div class="row">
+									<div class="col-md-6">
+										<form method="post" action="/api/users">
+											<div class="form-group">
+												<input type="text" name="user[name]" class="form-control" id="name" placeholder="Name" autofocus>
+											</div>
+											<div class="form-group">
+												<input type="text" name="user[email]" class="form-control" id="email" placeholder="Email" autofocus>
+											</div>
+											<div class="form-group">
+												<input type="password" name="user[password]" class="form-control" placeholder="Password">
+											</div>
+											<div class="form-group">
+												<input type="submit" value="Create your account" class="btn btn-primary">
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
 	<div class="edit-container container">
 		<!-- Page Heading -->

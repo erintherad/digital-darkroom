@@ -98,4 +98,7 @@ $(document).ready(function() {
 			}
 		});
 	});
+	$('#signUpModal').on('shown.bs.modal', function(event) {
+		$('#name').focus();
+	});
 });

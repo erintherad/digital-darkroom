@@ -5,10 +5,15 @@ salt = bcrypt.genSaltSync(10);
 
 // SCHEMAS
 
+var validateUser = function() {
+	// return true or false
+}
+
 var UserSchema = new Schema({
 	name: String,
 	email: String,
-	passwordDigest: String
+	passwordDigest: String,
+	// validate: validateUser
 });
 
 var PhotoSchema = new Schema({

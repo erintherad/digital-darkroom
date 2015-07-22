@@ -46,62 +46,18 @@ h1 small {
     font-weight: 700;
 }
 
-@media (max-width: 2000px) {
-    .navbar-brand {
-        background: url(../img/logo/logo.png) no-repeat;
-        background-size: 100%;
-        position: absolute;
-        top: 0px;
-        left: 30px;
-        padding-right: 100px;
-        padding-top: 100px;
-        padding-bottom: -10px;
-    }
-    .navbar-default .navbar-nav>li>a {
-        color: black;
-        font-size: 1.6em;
-    }
-    .navbar {
-       background-color: transparent;
-       background: transparent;
-       border-color: transparent;
-       border: none;
-       box-shadow: none;
-    }
-     .navbar-header {
-        float: none;
-    }
-    .navbar-left,.navbar-right {
-        float: none !important;
-    }
-    .navbar-toggle {
-        display: block;
-    }
-    .navbar-fixed-top {
-        top: 0;
-        border-width: 0 0 1px;
-    }
-    .navbar-collapse.collapse {
-        display: none!important;
-    }
-    .navbar-nav {
-        float: none!important;
-        margin-top: 7.5px;
-    }
-    .navbar-nav>li {
-        float: right;
-    }
-    .navbar-nav>li>a {
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .collapse.in{
-        display:block !important;
-    }
-    .navbar-inverse .navbar-toggle {
-        border-color: transparent;
-    }
+
+.navbar-brand {
+    background: url(../img/logo/logo.png) no-repeat;
+    background-size: 100%;
+    position: absolute;
+    top: 0px;
+    left: 30px;
+    padding-right: 100px;
+    padding-top: 100px;
+    padding-bottom: -10px;
 }
+  
 
 /*----------------------------
     CREATE VIEW STYLES
