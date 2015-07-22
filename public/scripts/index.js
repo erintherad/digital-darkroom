@@ -5,4 +5,7 @@ $(document).ready(function() {
 	$('#signInModal').on('shown.bs.modal', function(event) {
 		$('#email').focus();
 	});
+	$('#signUpModal').on('shown.bs.modal', function(event) {
+		$('#email').focus();
+	});
 });
