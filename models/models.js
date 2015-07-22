@@ -3,11 +3,18 @@ var mongoose = require('mongoose'),
     bcrypt = require('bcrypt'),
     salt = bcrypt.genSaltSync(10);
 
-// define user schema
+// SCHEMAS
+
 var UserSchema = new Schema({
   email: String,
   passwordDigest: String
-});   
+});
+
+var PhotoSchema = new Schema({
+	 img: { data: Buffer, contentType: String },
+	 text: String,
+	 author: String
+});
 
 // create a new user with secure (hashed) password
 UserSchema.statics.createSecure = function (email, password, callback) {
@@ -52,17 +59,8 @@ UserSchema.methods.checkPassword = function (password) {
   return bcrypt.compareSync(password, this.passwordDigest);
 };
 
-// SCHEMAS
-
-var PhotoSchema = new Schema({
-	 img: { data: Buffer, contentType: String },
-	 text: String,
-	 author: String
-});  
-
 var Photo = mongoose.model('Photo', PhotoSchema);  
-
 var User = mongoose.model('User', UserSchema);
 
 module.exports.Photo = Photo;
-module.exports = User;
+module.exports.User = User;

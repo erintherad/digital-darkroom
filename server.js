@@ -8,7 +8,6 @@ var express = require('express'),
 	_ = require('underscore'),
 	db = require('./models/models'),
 	mongoose = require('mongoose'),
-	User = require('./models/models'),
 	session = require('express-session');
 
 // server js and css files from public folder
@@ -26,7 +25,7 @@ app.use('/', function (req, res, next) {
 
   // finds user currently logged in based on `session.userId`
   req.currentUser = function (callback) {
-    User.findOne({_id: session.userId}, function (err, user) {
+    db.User.findOne({_id: session.userId}, function (err, user) {
       req.user = user;
       callback(null, user);
     });
@@ -89,7 +88,6 @@ app.post('/api/photos', function(req, res) {
 
 	// Persist the image data into db
 	newPhoto.save(function(err, savedPhoto) {
-		console.log("error(?): " + err);
 		// Respond with object to client
 		res.json({
 			'_id': savedPhoto._id,
@@ -157,7 +155,7 @@ app.post('/users', function(req, res) {
 	var newUser = req.body.user;
 
 	// create new user with secure password
-	User.createSecure(newUser.email, newUser.password, function(err, user) {
+	db.User.createSecure(newUser.email, newUser.password, function(err, user) {
 		res.send(user);
 	});
 });
@@ -169,7 +167,7 @@ app.post('/login', function (req, res) {
   var userData = req.body.user;
 
   // call authenticate function to check if password user entered is correct
-  User.authenticate(userData.email, userData.password, function (err, user) {
+  db.User.authenticate(userData.email, userData.password, function (err, user) {
     // saves user id to session
     req.login(user);
 
