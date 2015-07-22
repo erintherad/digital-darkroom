@@ -8,4 +8,9 @@ $(document).ready(function() {
 	$('#signUpModal').on('shown.bs.modal', function(event) {
 		$('#email').focus();
 	});
+
+	$('#sign-up').validate();
+
+	$('#log-in').validate();
+
 });
