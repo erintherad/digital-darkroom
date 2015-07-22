@@ -4,7 +4,7 @@ var originalCaman,
 $(document).ready(function() {
 	// renders image as canvas
 	originalCaman = Caman('#edit-img', function () {
-	this.render();
+		this.render();
 	});
 
 	$('#filters a').on('click', function(event) {
@@ -32,8 +32,7 @@ $(document).ready(function() {
 			url: '/api/photos',
 			data: {
 				imageData: $('#edit-img')[0].toDataURL(),
-				text: $('textarea[name=text]').val(),
-				author: $('input[name=author]').val()
+				text: $('textarea[name=text]').val()
 			},
 			success: function(data) {
 				// figure out where to send user next...

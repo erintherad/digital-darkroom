@@ -55,7 +55,7 @@ $(document).ready(function() {
 
 		$(modal).attr('data-photo-id', id);
 		modal.find('.image img').attr('src', '/photos/' + photo._id);
-		modal.find('.author').val(photo.author);
+		modal.find('.author').val(photo.author.name);
 		modal.find('.text').val(photo.text);
 	});
 
