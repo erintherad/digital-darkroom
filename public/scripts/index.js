@@ -18,9 +18,9 @@ $(document).ready(function() {
 			url: '/api/users',
 			data: {
 				user: {
-					name: $('#name').val(),
-					email: $('#email').val(),
-					password: $('#password').val()
+					name: $('#signupName').val(),
+					email: $('#signupEmail').val(),
+					password: $('#signupPassword').val()
 				}
 			},
 			success: function(data) {
@@ -32,3 +32,5 @@ $(document).ready(function() {
 		});
 	});
 });
+
+

@@ -157,6 +157,8 @@ app.post('/api/users', function(req, res) {
 	// grab user data from params (req body)
 	var newUser = req.body.user;
 
+	console.log(newUser);
+
 	// create new user with secure password
 	db.User.createSecure(newUser.name, newUser.email, newUser.password, function(err, user) {
 		if(err === null) {

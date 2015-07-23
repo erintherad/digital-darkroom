@@ -25,7 +25,8 @@ var UserSchema = new Schema({
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
 	},
 	passwordDigest: {
-		type: String
+		type: String,
+		required: true
 	}
 });
 
@@ -59,8 +60,10 @@ UserSchema.statics.createSecure = function (name, email, password, callback) {
 
 // authenticate user (when user logs in)
 UserSchema.statics.authenticate = function (email, password, callback) {
+	console.log(password);
 	// find user by email entered at log in
 	this.findOne({email: email}, function (err, user) {
+		console.log(password);
 		console.log(user);
 
 		// throw error if can't find user
