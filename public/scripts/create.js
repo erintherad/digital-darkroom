@@ -1,7 +1,9 @@
 var originalCaman,
 	filterContainer = $('#filterContainer');
 
+
 $(document).ready(function() {
+
 	// renders image as canvas
 	originalCaman = Caman('#edit-img', function () {
 		this.render();

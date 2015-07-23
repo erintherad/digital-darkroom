@@ -7,6 +7,7 @@ body {
     width: 100%;
     height: 100%;
     font-family: sertig;
+    background-color: white;
 }
 
 @font-face {
@@ -46,7 +47,9 @@ h1 small {
     font-weight: 700;
 }
 
-
+/*----------------------------
+    NAVBAR STYLES
+-----------------------------*/
 .navbar-brand {
     background: url(../img/logo/logo.png) no-repeat;
     background-size: 100%;
@@ -57,7 +60,25 @@ h1 small {
     padding-top: 100px;
     padding-bottom: -10px;
 }
-    
+.navbar {
+    background: white;
+    border-color: white;
+}
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+  background-color: transparent;
+  color: white;
+}
+.nav a, .nav a:focus, .nav a:hover {
+  background-color: transparent;
+  color: black;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+    background-color: transparent;
+    color: white;
+}  
+.navbar-collapse {
+    color: black;
+}
 
 
 /*----------------------------
@@ -77,10 +98,17 @@ h1 small {
 
 #photo-modal input.edit {
     border: solid;
+    border-width: 1px;
 }
-
-
-
-/*----------------------------
-    FOOTERS
------------------------------*/
+.author {
+    font-size: 2.3em;
+}
+.text {
+    font-size: 1.4em;
+}
+.glyphicon-pencil:before {
+    color: #B6B6B6;
+}
+.glyphicon-pencil:after {
+    color: black;
+}

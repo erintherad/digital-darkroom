@@ -48,8 +48,6 @@ UserSchema.statics.createSecure = function (name, email, password, callback) {
 	// hash password user enters at sign up
 	bcrypt.genSalt(function (err, salt) {
 		bcrypt.hash(password, salt, function (err, hash) {
-			console.log(hash);
-
 			// create the new user (save to db) with hashed password
 			that.create({
 				name: name,

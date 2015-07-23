@@ -47,6 +47,9 @@ h1 small {
 }
 
 
+/*----------------------------
+    NAVBAR STYLES
+-----------------------------*/
 .navbar-brand {
     background: url(../img/logo/logo.png) no-repeat;
     background-size: 100%;
@@ -56,6 +59,29 @@ h1 small {
     padding-right: 100px;
     padding-top: 100px;
     padding-bottom: -10px;
+}
+.navbar {
+    background: white;
+    border-color: white;
+    box-shadow: white;
+}
+.navbar-default {
+    box-shadow: none;
+}
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+  background-color: transparent;
+  color: white;
+}
+.nav a, .nav a:focus, .nav a:hover {
+  background-color: transparent;
+  color: black;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+    background-color: transparent;
+    color: white;
+}  
+.navbar-collapse {
+    color: black;
 }
   
 

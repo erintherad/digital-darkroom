@@ -2,15 +2,33 @@ var originalCaman,
 	filterContainer = $('#filterContainer');
 
 $(document).ready(function() {
-	$('#signInModal').on('shown.bs.modal', function(event) {
-		$('#email').focus();
-	});
 	$('#signUpModal').on('shown.bs.modal', function(event) {
-		$('#email').focus();
+		$('#name').focus();
 	});
 
-	$('#sign-up').validate();
+	// $('#sign-up').validate();
 
 	$('#log-in').validate();
 
+	$('#sign-up').on('submit', function(event) {
+		event.preventDefault();
+
+		$.ajax({
+			type: 'POST',
+			url: '/api/users',
+			data: {
+				user: {
+					name: $('#name').val(),
+					email: $('#email').val(),
+					password: $('#password').val()
+				}
+			},
+			success: function(data) {
+				window.location = '/gallery';
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				alert('Invalid input');
+			}
+		});
+	});
 });

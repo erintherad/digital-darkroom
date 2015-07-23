@@ -159,10 +159,14 @@ app.post('/api/users', function(req, res) {
 
 	// create new user with secure password
 	db.User.createSecure(newUser.name, newUser.email, newUser.password, function(err, user) {
-		// saves user id to session
-		req.login(user);
+		if(err === null) {
+			// saves user id to session
+			req.login(user);
 
-		res.redirect('/create');
+			res.json(user);
+		} else {
+			res.status(400).json(err.errors)
+		}
 	});
 });
 
