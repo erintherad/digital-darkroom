@@ -131,7 +131,7 @@ $(document).ready(function() {
 			},
 			success: function(data) {
 				alert('successfully created photo!');
-				window.location = "http://localhost:3000/gallery";
+				window.location = "https://digital-darkroom.herokuapp.com/gallery";
 			}
 		});
 	});
