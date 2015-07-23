@@ -81,6 +81,9 @@ $(document).ready(function() {
 		// Sets photo back to original
 		originalCaman.revert();
 
+		// revert sliders to 0
+		$('.filterRange').val(0);
+
 		// Storing id in variable
 		var filterId = $(this).attr('id');
 
@@ -101,6 +104,17 @@ $(document).ready(function() {
 			originalCaman[filterId](input.val());
 			originalCaman.render();
 		}	
+	});
+
+	// change values of slider
+	var filterValue = $('#filterValue');
+
+	$('.filterRange').slider({ 
+		max: 100,
+		min: -100,
+		slide: function(event, ui) {
+			filterValue.html(ui.value);
+		}
 	});
 
 	$('#submit').on('submit', function (event) {
