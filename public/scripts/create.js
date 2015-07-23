@@ -37,10 +37,12 @@ $(document).ready(function() {
 				var fileReader = new FileReader();
 				
 				fileReader.onloadend = function() {
-					var image = new Image();
+					// var image = new Image();
+					var image = $('#edit-img')[0];
 
 					image.onload = function() {
-						var canvas = $('#edit-img')[0];
+						var canvas = $('<canvas>')[0];
+						$(canvas).addClass('img-responsive center-block');
 						if(image.height > image.width) {
 							if(image.height > MAX_HEIGHT) {
 								image.width *= MAX_HEIGHT / image.height;
@@ -58,11 +60,11 @@ $(document).ready(function() {
 						ctx.drawImage(image, 0, 0, image.width, image.height);
 
 						// renders image as canvas
-						originalCaman = Caman('#edit-img', function () {
+						originalCaman = Caman(canvas, function () {
 							this.render();
 						});
 
-						// $(image).remove();
+						$(image).replaceWith(canvas);
 					};
 
 					image.src = fileReader.result;
@@ -87,6 +89,18 @@ $(document).ready(function() {
 			originalCaman[filterId]();
 			originalCaman.render();
 		}
+	});
+
+	$('.filterRange').on('change', function(event) {
+		var input = $(this);
+
+		var filterId = input.attr('data-filter');
+
+		// Based on what you clicked, run the filter if it exists
+		if(typeof originalCaman[filterId] == 'function') {
+			originalCaman[filterId](input.val());
+			originalCaman.render();
+		}	
 	});
 
 	$('#submit').on('submit', function (event) {
