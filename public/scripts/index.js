@@ -24,7 +24,7 @@ $(document).ready(function() {
 				}
 			},
 			success: function(data) {
-				window.location = '/gallery';
+				window.location = '/create';
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				alert('Invalid input');
