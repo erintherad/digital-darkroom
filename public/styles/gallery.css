@@ -8,6 +8,7 @@ body {
     height: 100%;
     font-family: sertig;
     background-color: white;
+    text-transform: uppercase;
 }
 
 @font-face {
@@ -33,6 +34,8 @@ h3 {
 }
 h1 small {
     font-family: sertig;
+    font-size: 0.5em;
+    text-transform: none;
 }
 
 .text-vertical-center {
