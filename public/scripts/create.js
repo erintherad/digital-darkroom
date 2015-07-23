@@ -42,6 +42,7 @@ $(document).ready(function() {
 
 					image.onload = function() {
 						var canvas = $('<canvas>')[0];
+						$(canvas).attr('id', 'edit-img');
 						$(canvas).addClass('img-responsive center-block');
 						if(image.height > image.width) {
 							if(image.height > MAX_HEIGHT) {
