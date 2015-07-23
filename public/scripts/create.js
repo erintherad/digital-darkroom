@@ -130,9 +130,8 @@ $(document).ready(function() {
 				text: $('textarea[name=text]').val()
 			},
 			success: function(data) {
-				// figure out where to send user next...
-				// navigate to gallery
 				alert('successfully created photo!');
+				window.location = "http://localhost:3000/gallery";
 			}
 		});
 	});

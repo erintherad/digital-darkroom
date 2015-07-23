@@ -183,7 +183,7 @@ app.post('/api/login', function (req, res) {
 		req.login(user);
 
 		// redirect to user create
-		res.redirect('/gallery');
+		res.redirect('/create');
 	});
 });
 

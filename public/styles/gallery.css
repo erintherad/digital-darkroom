@@ -107,7 +107,10 @@ h1 small {
     font-size: 2.3em;
 }
 .text {
-    font-size: 1.4em;
+    padding: 4px;
+    width: 200px;
+    font-size: 1.2em;
+    border: none;
 }
 .glyphicon-pencil:before {
     color: #B6B6B6;
