@@ -28,7 +28,8 @@ app.use(session({
 	saveUninitialized: true,
 	resave: true,
 	secret: 'DarkroomCookieSecret',
-	cookie: { maxAge: 60000 },
+	// one hour
+	cookie: { maxAge: 3600000 },
 	// to preserve the session of user, uses existing mongoose connection
 	store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
