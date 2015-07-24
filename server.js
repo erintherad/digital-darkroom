@@ -10,18 +10,27 @@ db = require('./models/models'),
 mongoose = require('mongoose'),
 session = require('express-session');
 
+var MongoStore = require('connect-mongo')(session);
+
 // server js and css files from public folder
 app.use(express.static(__dirname + '/public'));
 
 // configure bodyParser for handling data
 app.use(bodyParser.urlencoded({extended: true, limit: '5mb'}));
 
+// connect to mongo server
+mongoose.connect(
+	process.env.MONGOLAB_URI || 'mongodb://localhost/darkroom'
+);
+
 // set session options
 app.use(session({
 	saveUninitialized: true,
 	resave: true,
 	secret: 'DarkroomCookieSecret',
-	cookie: { maxAge: 60000 }
+	cookie: { maxAge: 60000 },
+	// to preserve the session of user, uses existing mongoose connection
+	store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
 
 // middleware to manage sessions
@@ -192,10 +201,6 @@ app.get('/logout', function(req, res) {
 
 	res.redirect('/');
 });
-
-mongoose.connect(
-	process.env.MONGOLAB_URI || 'mongodb://localhost/darkroom'
-);
 
 app.listen(process.env.PORT || 3000, function() {
 	console.log('Server started on localhost:3000');

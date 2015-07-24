@@ -25,6 +25,7 @@
     "bcrypt": "^0.8.3",
     "body-parser": "^1.13.2",
     "chai": "^3.2.0",
+    "connect-mongo": "^0.8.2",
     "express": "^4.13.1",
     "express-session": "^1.11.3",
     "mocha": "^2.2.5",
