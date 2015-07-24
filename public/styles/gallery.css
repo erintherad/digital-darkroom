@@ -49,6 +49,12 @@ h1 small {
     font-size: 4.5em;
     font-weight: 700;
 }
+a.pull-right {
+    padding-top: 20px;
+    font-size: 0.5em;
+    text-decoration: none!;
+    color: black;
+}
 
 /*----------------------------
     NAVBAR STYLES
