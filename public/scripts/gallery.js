@@ -17,7 +17,7 @@ $(document).ready(function() {
 				_.each(allPhotos, function(photo, index) {
 					var $photo = $(photoTemplate(photo));
 					$photo.attr('data-index', index);
-					$photoList.append($photo);
+					$photoList.prepend($photo);
 				});
 			});
 		},
