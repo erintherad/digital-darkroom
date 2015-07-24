@@ -96,14 +96,17 @@ $(document).ready(function() {
 	});
 
 	$('.filterRange').on('change', function(event) {
-		var input = $(this);
+		var $input = $(this);
+		var inputValue = $input.val();
 
-		var filterId = input.attr('data-filter');
+		var filterId = $input.attr('data-filter');
 
 		// Based on what you clicked, run the filter if it exists
 		if(typeof originalCaman[filterId] == 'function') {
-			originalCaman[filterId](input.val());
+			originalCaman[filterId](inputValue);
 			originalCaman.render();
+
+			$input.siblings('.filterValue').text(inputValue);
 		}	
 	});
 
