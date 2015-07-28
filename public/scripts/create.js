@@ -2,28 +2,7 @@ var originalCaman,
 	filterContainer = $('#filterContainer');
 
 $(document).ready(function() {
-	// Dropzone.autoDiscover = false;
 
-	// $('#fileUpload').dropzone({
-	// 	url: '/not-real',
-	// 	accept: function(file, done) {
-	// 		var fileReader = new FileReader();
-
-			// fileReader.onloadend = function() {
-			// 	$('#edit-img').attr('src', fileReader.result);
-
-			// 	// renders image as canvas
-			// 	originalCaman = Caman('#edit-img', function () {
-			// 		this.render();
-			// 	});
-			// }
-
-	// 		fileReader.readAsDataURL(file);
-
-	// 		// do not upload the file (yet)
-	// 		return false;
-	// 	}
-	// });
 	var MAX_HEIGHT = 500;
 	var MAX_WIDTH  = 500;
 
@@ -127,24 +106,6 @@ $(document).ready(function() {
 		}
 	});
 
-	$('#submit').on('submit', function (event) {
-		event.preventDefault();
-		
-		// Send POST to server to create newly edited photo
-		$.ajax({
-			type: "POST",
-			url: '/api/photos',
-			data: {
-				imageData: $('#edit-img')[0].toDataURL(),
-				text: $('textarea[name=text]').val()
-			},
-			success: function(data) {
-				alert('successfully created photo!');
-				window.location = "/gallery";
-				// window.location = "http://localhost:3000/gallery";
-			}
-		});
-	});
 	var $reset = $('#resetbtn');
 
 	$reset.on('click', function(e) {
