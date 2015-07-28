@@ -8,7 +8,9 @@ $(document).ready(function() {
 
 	// $('#sign-up').validate();
 
+
 	$('#log-in').validate();
+	//test for login
 
 	$('#sign-up').on('submit', function(event) {
 		event.preventDefault();

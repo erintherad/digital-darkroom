@@ -22,14 +22,15 @@
   },
   "homepage": "https://github.com/erintherad/digital-darkroom",
   "dependencies": {
-    "bcrypt": "^0.8.3",
+    "bcrypt": "^0.8.4",
     "body-parser": "^1.13.2",
     "chai": "^3.2.0",
+    "cheerio": "^0.19.0",
     "connect-mongo": "^0.8.2",
     "express": "^4.13.1",
     "express-session": "^1.11.3",
     "mocha": "^2.2.5",
-    "mongoose": "^4.0.8",
+    "mongoose": "^4.1.0",
     "request": "^2.60.0",
     "underscore": "^1.8.3"
   }
