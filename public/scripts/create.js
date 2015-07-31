@@ -95,6 +95,10 @@ $(document).ready(function() {
 		}
 	});
 
+	// $('#download').on('click', function(event) {
+	// 	window.reload();
+	// });
+
 	// change values of slider
 	var filterValue = $('#filterValue');
 
