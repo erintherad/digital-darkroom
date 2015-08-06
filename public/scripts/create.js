@@ -34,13 +34,16 @@ $(document).ready(function() {
 				var fileReader = new FileReader();
 				
 				fileReader.onloadend = function() {
-					// var image = new Image();
-					var image = $('#edit-img')[0];
+					var image = new Image();
 
 					image.onload = function() {
+						$('#edit-canvas').remove();
+
+						// var canvas = $('#edit-canvas')[0];
 						var canvas = $('<canvas>')[0];
-						$(canvas).attr('id', 'edit-img');
+						$(canvas).attr('id', 'edit-canvas');
 						$(canvas).addClass('img-responsive center-block');
+
 						if(image.height > image.width) {
 							if(image.height > MAX_HEIGHT) {
 								image.width *= MAX_HEIGHT / image.height;
@@ -52,6 +55,7 @@ $(document).ready(function() {
 								image.width = MAX_WIDTH;
 							}
 						}
+
 						var ctx = canvas.getContext("2d");
 						canvas.width = image.width;
 						canvas.height = image.height;
@@ -62,7 +66,8 @@ $(document).ready(function() {
 							this.render();
 						});
 
-						$(image).replaceWith(canvas);
+						$('#edit-img').addClass('hidden');
+						$('#edit-view').append(canvas);
 					};
 
 					image.src = fileReader.result;
