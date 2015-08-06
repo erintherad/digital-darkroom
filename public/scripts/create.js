@@ -93,7 +93,9 @@ $(document).ready(function() {
 		// Based on what you clicked, run the filter if it exists
 		if(typeof originalCaman[filterId] == 'function') {
 			originalCaman[filterId]();
-			originalCaman.render();
+			originalCaman.render(function() {
+				$('#download').attr('href', $('#edit-canvas')[0].toDataURL());
+			});
 		}
 	});
 
@@ -106,10 +108,12 @@ $(document).ready(function() {
 		// Based on what you clicked, run the filter if it exists
 		if(typeof originalCaman[filterId] == 'function') {
 			originalCaman[filterId](inputValue);
-			originalCaman.render();
+			originalCaman.render(function() {
+				$('#download').attr('href', $('#edit-canvas')[0].toDataURL());
+			});
 
 			$input.siblings('.filterValue').text(inputValue);
-		}	
+		}
 	});
 
 	// change values of slider
