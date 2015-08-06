@@ -1,9 +1,6 @@
 var originalCaman,
 	filterContainer = $('#filterContainer');
 
-var tempFilePleaseToDelete;
-
-
 $(document).ready(function() {
 	// Dropzone.autoDiscover = false;
 
