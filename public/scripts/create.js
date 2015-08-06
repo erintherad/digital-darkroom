@@ -145,6 +145,16 @@ $(document).ready(function() {
 			}
 		});
 	});
+	var $reset = $('#resetbtn');
+
+	$reset.on('click', function(e) {
+	    $('input[type=range]').val(0);
+	    $('.filterValue').text(0);
+	    Caman('#edit-canvas', function() {
+	      this.revert();
+	      this.render();
+	    });
+	  });
 
 	// Use the mousewheel plugin to scroll
 	// scroll the div more intuitively
