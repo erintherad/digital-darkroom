@@ -118,6 +118,12 @@ a.pull-right {
     font-size: 1.2em;
     border: none;
 }
+.text-edit {
+    padding: 4px;
+    width: 200px;
+    font-size: 1.2em;
+    border: 1px solid black;
+}
 .glyphicon-pencil:before {
     color: #B6B6B6;
 }

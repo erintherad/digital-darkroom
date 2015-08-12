@@ -27,7 +27,7 @@ $(document).ready(function() {
 		},
 
 		resetModal: function() {
-			$('.text').removeClass('edit');
+			$('.text').removeClass('text-edit');
 			$('.modal-footer').addClass('hidden');
 		},
 
@@ -64,7 +64,7 @@ $(document).ready(function() {
 	});
 
 	$('.edit-pencil').on('click', function(event) {
-		$('.text').addClass('edit');
+		$('.text').addClass('text-edit');
 		$('.modal-footer').removeClass('hidden');
 	});
 

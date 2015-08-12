@@ -54,6 +54,11 @@ footer {
     width: 100%;
     padding-top: 5px;
 }
+
+#sign-in-link {
+    font-size: 1em;
+    margin-top: 20px;
+}
 /*----------------------------
     BUTTON STYLES
 -----------------------------*/
@@ -103,120 +108,3 @@ footer {
 
     
 
-/*----------------------------
-    FILTER SCROLL STYLES
------------------------------*/
-
-/*#filterContainer{
-    width: 650px;
-    margin: 50px auto 90px;
-    position: relative;
-}
-
-#filterContainer:before{
-    width: 20px;
-    box-shadow: 15px 0 10px #111;
-    position: absolute;
-    top: 0;
-    left: -22px;
-    bottom:-10px;
-    z-index:5;
-}
-#filterContainer:after{
-    width: 20px;
-    box-shadow: -15px 0 10px #111;
-    position: absolute;
-    top: 0;
-    right: -22px;
-    bottom:-10px;
-    z-index:5;
-}
-#filters{
-    padding: 20px 20px 30px;
-    border-radius: 8px;
-    overflow: hidden;
-    list-style: none;
-    white-space: nowrap;
-    overflow-x: scroll;
-}
-#filters li{
-    display:inline-block;
-    margin:0 15px 0 0;
-}
-
-#filters li a{
-    display: block;
-    width: 150px;
-    height: 130px;
-    display: inline-block;
-    position: relative;
-    background: center top no-repeat;
-    text-decoration: none !important;
-    color: rgb(63, 63, 63);
-    font-weight: bold;
-    line-height: 294px;
-    text-align: center;
-    box-shadow: 0 0 1px rgba(255,255,255,0.4) inset;
-    border-radius: 4px;
-    font-size: 12px;
-}
-
-#filters li a.active{
-    cursor:default;
-}
-
-#filters li a.active:before{
-    content: '';
-    position: absolute;
-    width: 49px;
-    height: 45px;
-    top: 43px;
-    left: 51px;
-    background: url('../img/star.jpg') no-repeat;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.5);
-}
-
-/* The filters */
-
-#filters li #normal{        background-image:url('/img/filters/normal.png'); }
-#filters li #vintage{       background-image:url('/img/filters/vintage.png'); }
-#filters li #lomo{          background-image:url('/img/filters/lomo.png'); }
-#filters li #clarity{       background-image:url('/img/filters/clarity.png'); }
-#filters li #sinCity{       background-image:url('/img/filters/sinCity.png'); }
-#filters li #sunrise{       background-image:url('/img/filters/sunrise.png'); }
-#filters li #crossProcess{  background-image:url('/img/filters/crossProcess.png'); }
-#filters li #orangePeel{    background-image:url('/img/filters/orangePeel.png'); }
-#filters li #love{          background-image:url('/img/filters/love.png'); }
-#filters li #grungy{        background-image:url('/img/filters/grungy.png'); }
-#filters li #jarques{       background-image:url('/img/filters/jarques.png'); }
-#filters li #pinhole{       background-image:url('/img/filters/pinhole.png'); }
-#filters li #oldBoot{       background-image:url('/img/filters/oldBoot.png'); }
-#filters li #glowingSun{    background-image:url('/img/filters/glowingSun.png'); }
-#filters li #hazyDays{      background-image:url('/img/filters/hazyDays.png'); }
-#filters li #herMajesty{    background-image:url('/img/filters/herMajesty.png'); }
-#filters li #nostalgia{     background-image:url('/img/filters/nostalgia.png'); }
-#filters li #hemingway{     background-image:url('/img/filters/hemingway.png'); }
-#filters li #concentrate{   background-image:url('/img/filters/concentrate.png'); }
-
-/* Custom scrollbars for webkit */
-
-#filterContainer ::-webkit-scrollbar {
-    height: 4px;
-    background-color: rgba(100,100,100,0.2);
-    border-radius: 2px;
-}
-
-/* Handle */
-#filterContainer ::-webkit-scrollbar-thumb {
-    border-radius: 1px;
-    background: #fff;
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
-}
-
-#filterContainer ::-webkit-scrollbar-thumb:window-inactive {
-    background: #aaa;
-}*/
-
-/*----------------------------
-    FOOTERS
------------------------------*/

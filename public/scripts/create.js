@@ -135,7 +135,7 @@ $(document).ready(function() {
 			type: "POST",
 			url: '/api/photos',
 			data: {
-				imageData: $('#edit-img')[0].toDataURL(),
+				imageData: $('#edit-canvas')[0].toDataURL(),
 				text: $('textarea[name=text]').val()
 			},
 			success: function(data) {
