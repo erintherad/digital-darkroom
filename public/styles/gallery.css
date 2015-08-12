@@ -55,6 +55,12 @@ a.pull-right {
     text-decoration: none!;
     color: black;
 }
+.social {
+    margin-top: 323px;
+}
+.social img {
+    padding-right: 10px;
+}
 
 /*----------------------------
     NAVBAR STYLES
