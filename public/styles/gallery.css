@@ -61,6 +61,9 @@ a.pull-right {
 .social img {
     padding-right: 10px;
 }
+.textarea {
+    resize: none;
+}
 
 /*----------------------------
     NAVBAR STYLES
@@ -128,7 +131,7 @@ a.pull-right {
     padding: 4px;
     width: 200px;
     font-size: 1.2em;
-    border: 1px solid black;
+    border: 1px solid gray;
 }
 .glyphicon-pencil:before {
     color: #B6B6B6;
